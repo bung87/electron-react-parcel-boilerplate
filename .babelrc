@@ -1,0 +1,26 @@
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true,
+        "useESModules":true,
+        "absoluteRuntime": false,
+        "corejs": false,
+        "helpers": false
+      }
+    ]
+  ],
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "electron": "11.2.1"
+        }
+      }
+    ]
+  ]
+}

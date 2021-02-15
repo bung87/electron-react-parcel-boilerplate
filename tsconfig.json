@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": ["dom", "es2019"],
+    "target": "esnext",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "app": ["./app"]
+    }
+  },
+  "exclude": [".git", "node_modules"]
+}

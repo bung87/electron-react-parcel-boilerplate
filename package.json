@@ -1,0 +1,114 @@
+{
+  "name": "electron-react-parcel-boilerplate",
+  "productName": "ElectronReactParcel",
+  "version": "11.2.1",
+  "description": "A boilerplate for Electron + React + Parcel.",
+  "main": "app/main/.parcel/main.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development run-s main:build electron:watch",
+    "test": "run-s parcel:build \"test:jest {@}\" --",
+    "lint": "tslint app/**/*.ts{,x}",
+    "release": "run-s parcel:build \"electron:build {@}\" --",
+    "electron:watch": "run-p -r parcel:watch electron:start",
+    "electron:start": "wait-on tcp:1124  && echo 'renderer started' && nodemon -P 300 --watch app/main/.parcel --exec \"./node_modules/.bin/electron .\"",
+    "electron:build": "electron-builder --x64 --publish=never",
+    "parcel:watch": "run-p -r main:watch renderer:watch",
+    "main:watch": "parcel watch app/main/*.ts --out-dir app/main/.parcel  --target electron",
+    "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development",
+    "parcel:build": "run-s main:build renderer:build",
+    "main:build": "parcel build app/main/*.ts --out-dir app/main/.parcel --target electron",
+    "renderer:build": "parcel build app/renderer/index.html --public-url ./ --out-dir app/renderer/.parcel/production",
+    "icon": "electron-icon-maker --input=logo.png --output=./assets",
+    "test:jest": "jest"
+  },
+  "author": "bung87",
+  "license": "MIT",
+  "build": {
+    "appId": "org.bung87.ElectronReactParcel",
+    "files": [
+      "app/**",
+      "!app/main/*.ts",
+      "!app/main/tests/**",
+      "!app/renderer/**",
+      "app/renderer/.parcel/production/**",
+      "!app/**/*.map"
+    ],
+    "mac": {
+      "icon": "assets/icons/mac/icon.icns",
+      "target": [
+        "zip"
+      ],
+      "artifactName": "${productName}-mac.${ext}"
+    },
+    "win": {
+      "icon": "assets/icons/win/icon.ico",
+      "target": [
+        "zip"
+      ],
+      "artifactName": "${productName}-win.${ext}"
+    },
+    "linux": {
+      "target": [
+        "zip"
+      ],
+      "category": "Development",
+      "artifactName": "${productName}-linux.${ext}"
+    },
+    "directories": {
+      "output": "release"
+    }
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "app/renderer/**",
+      "!app/renderer/index.tsx",
+      "!app/renderer/tests/**",
+      "!app/renderer/.parcel/**"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "babel-jest": "^25.4.0",
+    "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
+    "jest": "^25.4.0",
+    "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.8.0 || ^17.0.0-rc.1",
+    "react-dom": ">= 16.8.0",
+    "react-router-dom": "^5.1.2",
+    "react-test-renderer": "^16.13.1",
+    "spectron": "^10.0.1",
+    "tslint": "^6.1.1",
+    "tslint-react": "^5.0.0",
+    "typescript": "^3.8.3",
+    "wait-on": "^5.2.1",
+    "@bung87/electron-icon-maker": "^0.0.6"
+  },
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "electron-log": "^4.3.0"
+  }
+}
