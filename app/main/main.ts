@@ -1,4 +1,4 @@
-import { format, parse } from 'url';
+import { serializeURL } from 'whatwg-url';
 import { BrowserWindow, app, protocol, dialog, globalShortcut, Menu } from 'electron';
 import { resolve } from 'app-root-path';
 import log from 'electron-log';
@@ -75,10 +75,9 @@ app.on('ready', async () => {
   });
 
   const devPath = 'http://localhost:1124';
-  const prodPath = format({
-    pathname: resolve('app/renderer/.parcel/production/index.html'),
+  const prodPath = serializeURL({
+    path: resolve('app/renderer/.parcel/production/index.html'),
     protocol: 'file:',
-    slashes: true,
   });
   const root = isDev ? devPath : prodPath;
 

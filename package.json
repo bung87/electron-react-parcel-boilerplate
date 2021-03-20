@@ -16,7 +16,7 @@
     "main:watch": "parcel watch app/main/*.ts --out-dir app/main/.parcel  --target electron",
     "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development",
     "parcel:build": "run-s main:build renderer:build",
-    "main:build": "parcel build app/main/*.ts --out-dir app/main/.parcel --target electron",
+    "main:build": "parcel build app/main/*.ts --out-dir app/main/.parcel --target node",
     "renderer:build": "parcel build app/renderer/index.html --public-url ./ --out-dir app/renderer/.parcel/production",
     "icon": "electron-icon-maker --input=logo.png --output=./assets",
     "test:jest": "jest"
@@ -86,16 +86,19 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
+    "@bung87/electron-icon-maker": "^0.0.6",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "babel-jest": "^25.4.0",
     "electron": "^11.2.1",
     "electron-builder": "^22.9.1",
+    "esbuild": "^0.8.27",
     "jest": "^25.4.0",
     "nodemon": "^2.0.3",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-esbuild": "^1.0.5",
     "react": "^16.8.0 || ^17.0.0-rc.1",
     "react-dom": ">= 16.8.0",
     "react-router-dom": "^5.1.2",
@@ -103,12 +106,11 @@
     "spectron": "^10.0.1",
     "tslint": "^6.1.1",
     "tslint-react": "^5.0.0",
-    "typescript": "^3.8.3",
-    "wait-on": "^5.2.1",
-    "@bung87/electron-icon-maker": "^0.0.6"
+    "wait-on": "^5.2.1"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "electron-log": "^4.3.0"
+    "electron-log": "^4.3.0",
+    "whatwg-url": "^8.4.0"
   }
 }
