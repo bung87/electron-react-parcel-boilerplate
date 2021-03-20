@@ -1,6 +1,5 @@
 # Electron-React-Parcel-Boilerplate
 ![Build/release](https://github.com/bung87/electron-react-parcel-boilerplate/workflows/Build/release/badge.svg?branch=main)
-[![Travis CI](https://img.shields.io/travis/com/bung87/electron-react-parcel-boilerplate/master.svg?label=Travis%20CI&style=flat-square)](https://travis-ci.com/bung87/electron-react-parcel-boilerplate)
 [![Azure Pipelines](https://img.shields.io/vso/build/bung87/electron-react-parcel-boilerplate/9/master.svg?label=Azure%20Pipelines&style=flat-square)](https://dev.azure.com/bung87/electron-react-parcel-boilerplate/_build/latest?definitionId=9)
 [![Dependencies Status](https://img.shields.io/david/bung87/electron-react-parcel-boilerplate.svg?style=flat-square)](https://david-dm.org/bung87/electron-react-parcel-boilerplate)
 [![DevDependencies Status](https://img.shields.io/david/dev/bung87/electron-react-parcel-boilerplate.svg?style=flat-square)](https://david-dm.org/bung87/electron-react-parcel-boilerplate?type=dev)
